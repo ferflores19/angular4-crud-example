@@ -1,0 +1,15 @@
+@startuml
+
+[school-restaurant] ..> SchoolRestaurantBackEnd : HTTP
+note right of [school-restaurant]
+  Front-end:
+  Angular 4 project  
+end note
+
+note left of SchoolRestaurantBackEnd
+  Backend services:
+  Business logic
+  Data base access...etc.
+end note
+
+@enduml

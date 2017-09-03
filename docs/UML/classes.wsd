@@ -1,0 +1,96 @@
+@startuml
+
+package app {
+
+  package menu {
+    class MenuComponent <<component>> {
+
+    }
+  }
+
+  class AppComponent <<component>> {
+
+  }
+
+
+  package CurrentOption {
+    class CurrentOptionComponent <<component>> {
+
+    }
+  }
+
+  AppComponent --> MenuComponent
+  AppComponent --> CurrentOptionComponent
+}
+
+package customers {
+
+  enum GenderEnum {
+    Female
+    Male
+  }
+
+  interface Customer {
+    +name:string
+    +address:string
+    +stratum: string
+    +gender: GenderEnum
+  }
+
+  namespace customers.add{
+    class AddComponent <<component>> {
+
+    }
+  }
+  note bottom of customers.add
+    Componente Angular 4 para agregar customers
+  end note
+
+   namespace customers.list{
+    class ListComponent <<component>> {
+
+    }
+  }
+  note bottom of customers.list
+    Componente Angular 4 para listar customers
+  end note
+
+  Customer -- GenderEnum
+
+  namespace customers.index{
+    class IndexComponent <<component>> {
+
+    }
+  }
+  note bottom of customers.index
+    Componente principal de customer
+    internamente contiene los componentes: <b>add</b> y <b>list</b>
+  end note
+
+  customers.index --> customers.add
+  customers.index --> customers.list
+}
+
+package orders {
+
+  interface Order{
+    +customerId:int
+    +product: string
+  }
+
+  namespace orders.add  {
+    class AddComponent <<component>>{
+
+    }
+  }
+}
+
+Order --> Customer
+
+app +-- customers
+app +-- orders
+
+CurrentOptionComponent --> orders.add.AddComponent
+CurrentOptionComponent --> customers.index.IndexComponent
+
+@enduml
