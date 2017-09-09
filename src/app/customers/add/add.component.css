@@ -1,0 +1,8 @@
+.customer-radio-group {
+    display: inline-flex;
+    flex-direction: row;
+  }
+  
+  .customer-radio-button {
+    margin: 5px;
+  }    
