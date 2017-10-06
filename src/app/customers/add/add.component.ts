@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Customer } from '../customer';
+import { CustomerDataServerService } from '../customer-data-server.service';
 
 @Component({
   selector: 'customer-add',
@@ -21,19 +22,24 @@ export class AddComponent implements OnInit {
   ];
 
   genderOptionsList = [
-    'Male',
-    'Female',
+    { value: 0, label: 'Female' },
+    { value: 1, label: 'Male' },
   ];  
 
-  constructor() {
-    this.customer = new Customer("", "", "", "");
+  constructor(private customerService:CustomerDataServerService) {
+    
   }
 
   ngOnInit() {
+    this.customer = new Customer("", "", 1, 0);
   }
 
-  onSaveCustomer(){        
-    console.log(JSON.stringify(this.customer));
+  onNewCustomer(){
+    this.customer = new Customer("", "", 1, 0);
+  }
+
+  onSaveCustomer(){            
+    this.customerService.saveCustomer(this.customer);
   }
 
 }

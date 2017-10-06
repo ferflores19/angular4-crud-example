@@ -1,3 +1,4 @@
+import {CustomerDataMemoryService} from './customer-data-memory.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -43,6 +44,8 @@ import {
   MdTooltipModule,
 } from '@angular/material';
 
+import { CustomerDataServerService } from './customer-data-server.service';
+
 @NgModule({
   imports: [
 
@@ -84,6 +87,7 @@ import {
     MdTooltipModule,
     
   ],
-  declarations: [AddComponent, ListComponent, IndexComponent]
+  declarations: [AddComponent, ListComponent, IndexComponent],
+  providers:[CustomerDataMemoryService, CustomerDataServerService]
 })
 export class CustomersModule { }

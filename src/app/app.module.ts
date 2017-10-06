@@ -37,6 +37,8 @@ import {
   MdTooltipModule,
 } from '@angular/material';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { CustomersModule } from './customers/customers.module';
@@ -103,7 +105,8 @@ const appRoutes: Routes = [
     OrdersModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

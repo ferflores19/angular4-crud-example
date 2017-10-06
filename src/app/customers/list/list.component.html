@@ -1,3 +1,15 @@
-<p>
-  list customer
-</p>
+<table border="1">
+    <tr>
+      <td>Name</td>
+      <td>Address</td>
+      <td>Stratum</td>
+      <td>Gender</td>
+    </tr>
+    <tr *ngFor="let customer of customerService.customersList">
+      <td>{{customer.name}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.stratum}}</td>
+      <td>{{getGenderOptions()[customer.gender]}}</td>
+    </tr>
+  </table>
+  <br/>

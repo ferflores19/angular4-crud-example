@@ -37,8 +37,8 @@
         <td>
           <br/>
           <md-radio-group required class="customer-radio-group" [(ngModel)]="customer.gender" name="gender" #gender="ngModel">
-            <md-radio-button required class="customer-radio-button" *ngFor="let genderOption of genderOptionsList" [value]="genderOption">
-              {{genderOption}}
+            <md-radio-button required class="customer-radio-button" *ngFor="let genderOption of genderOptionsList" [value]="genderOption.value">
+              {{genderOption.label}}
             </md-radio-button>
           </md-radio-group>
           <md-error *ngIf="!gender.valid">
@@ -50,6 +50,10 @@
         <td colspan="2">
           <br/>
           <div class="button-row">
+            <button md-raised-button color="primary" (click)="onNewCustomer()">
+              New
+            </button>
+
             <button md-raised-button color="primary" [disabled]="!addForm.valid" (click)="onSaveCustomer()">
               Save
             </button>

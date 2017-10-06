@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerDataServerService } from '../customer-data-server.service';
+
 
 @Component({
   selector: 'customer-list',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private customerService:CustomerDataServerService) { }
 
-  ngOnInit() {
+  ngOnInit() {    
+    console.log("hi list");
+    this.customerService.loadCustomers();
   }
+
+  getGenderOptions() {
+    return [
+      "Female",
+      "Male"
+    ]
+  };
+
 
 }
