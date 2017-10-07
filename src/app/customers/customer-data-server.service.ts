@@ -19,8 +19,9 @@ export class CustomerDataServerService {
   }
 
   saveCustomer(customer:Customer){    
-    this.http.post('http://localhost:1814/Customer/SaveCustomer', customer).subscribe(data => {
-      debugger
+    let queryString:string =  `?name=${customer.name}&gender=${customer.gender}&address=${customer.address}&stratum=${customer.stratum}`;
+    this.http.get('http://localhost:1814/Customer/SaveCustomer'+queryString).subscribe(data => {
+      this.loadCustomers();
     });
   }
 }
